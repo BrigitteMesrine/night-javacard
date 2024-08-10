@@ -16,12 +16,13 @@ public class Contact {
     private String nickname;
     private String gitLink;
 
-    private enum Gender {
+    public enum Gender {
         MALE,
         FEMALE,
         NON_BINARY
     }
 
+    @SuppressWarnings({"java:S107"})
     public Contact(String firstName, String lastName, String phone, String email, String address, String zipCode,
             Enum<Gender> gender, LocalDate birthDate, String proPhone, String nickname, String gitLink) {
         this.firstName = firstName;
