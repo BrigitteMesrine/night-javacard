@@ -1,0 +1,73 @@
+<diagram program="umletino" version="15.1"><zoom_level>10</zoom_level><element><id>UMLClass</id><coordinates><x>940</x><y>280</y><w>210</w><h>90</h></coordinates><panel_attributes>ContactJSONSérializer
+--
+
+--
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>940</x><y>570</y><w>210</w><h>80</h></coordinates><panel_attributes>ContactVCardSerializer
+--
+
+--
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>940</x><y>820</y><w>210</w><h>90</h></coordinates><panel_attributes>ContactBinarySérializer
+--
+
+--
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1430</x><y>270</y><w>410</w><h>120</h></coordinates><panel_attributes>&lt;&lt;interface&gt;&gt;
+Serialier&lt;T&gt;
+--
+
+--
++ saveList(filePath: String, objetcsToSave: ArrayList&lt;T&gt;): void
++ save(filePAth: String, T object): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1450</x><y>830</y><w>210</w><h>110</h></coordinates><panel_attributes>&lt;&lt;interface&gt;&gt;
+Deserializer&lt;T&gt;
+--
+
+--
++ loadList(filePath: String): ArrayList&lt;T&gt;
++ load(filePAth: String): T</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>400</x><y>250</y><w>210</w><h>90</h></coordinates><panel_attributes>Contact
+--
+- 
+--
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>400</x><y>20</y><w>210</w><h>90</h></coordinates><panel_attributes>&lt;&lt;interface&gt;&gt;
+java.io.Serializable
+--
+
+--
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>600</x><y>310</y><w>360</w><h>50</h></coordinates><panel_attributes>lt=&lt;&lt;.
+&lt;&lt;uses&gt;&gt;</panel_attributes><additional_attributes>10;30;340;10</additional_attributes></element><element><id>Relation</id><coordinates><x>490</x><y>100</y><w>110</w><h>170</h></coordinates><panel_attributes>lt=&lt;&lt;.
+&lt;&lt;implements&gt;&gt;</panel_attributes><additional_attributes>10;10;10;150</additional_attributes></element><element><id>Relation</id><coordinates><x>600</x><y>330</y><w>360</w><h>290</h></coordinates><panel_attributes>lt=&lt;&lt;.
+&lt;&lt;uses&gt;&gt;</panel_attributes><additional_attributes>10;10;340;270</additional_attributes></element><element><id>Relation</id><coordinates><x>600</x><y>330</y><w>360</w><h>570</h></coordinates><panel_attributes>lt=&lt;&lt;.
+&lt;&lt;uses&gt;&gt;</panel_attributes><additional_attributes>10;10;340;550</additional_attributes></element><element><id>UMLNote</id><coordinates><x>840</x><y>0</y><w>320</w><h>90</h></coordinates><panel_attributes>Note..
+Classes qui permettent d'effectuer
+la sauvegarde des objetcs de la classe "Contact"
+sous les différents formats attendus.
+bg=orange</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>950</x><y>80</y><w>30</w><h>220</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;200;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>910</x><y>900</y><w>60</w><h>130</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>40;10;10;110</additional_attributes></element><element><id>UMLNote</id><coordinates><x>660</x><y>1010</y><w>320</w><h>90</h></coordinates><panel_attributes>Note..
+Classes qui permettent d'effectuer
+la sauvegarde des objetcs de la classe "Contact"
+sous les différents formats attendus.
+bg=orange</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1140</x><y>860</y><w>330</w><h>40</h></coordinates><panel_attributes>lt=&lt;&lt;.
+&lt;&lt;implements&gt;&gt;</panel_attributes><additional_attributes>310;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>1140</x><y>300</y><w>310</w><h>40</h></coordinates><panel_attributes>lt=&lt;&lt;.
+&lt;&lt;implements&gt;&gt;</panel_attributes><additional_attributes>290;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>1140</x><y>330</y><w>310</w><h>270</h></coordinates><panel_attributes>lt=&lt;&lt;.
+&lt;&lt;implements&gt;&gt;</panel_attributes><additional_attributes>290;10;10;250</additional_attributes></element><element><id>Relation</id><coordinates><x>1140</x><y>360</y><w>310</w><h>520</h></coordinates><panel_attributes>lt=&lt;&lt;.
+&lt;&lt;implements&gt;&gt;</panel_attributes><additional_attributes>290;10;10;500</additional_attributes></element><element><id>UMLClass</id><coordinates><x>410</x><y>510</y><w>210</w><h>90</h></coordinates><panel_attributes>ViewableContact
+--
+TODO à completer
+--
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>490</x><y>330</y><w>70</w><h>200</h></coordinates><panel_attributes>lt=&lt;&lt;.
+&lt;&lt;uses&gt;&gt;</panel_attributes><additional_attributes>10;10;10;180</additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>310</y><w>210</w><h>240</h></coordinates><panel_attributes>FormulaireContactController2
+--
+TODO à completer
+--
+- handleNouveau()
+- handleModifier()
+- handleEnregistrer()
+- handleSuppriumer()
+- showContactDetails()
+- handleSelectAll()
+- handleClear()
+- handleVCard()
+- handleJson()
+- handleQuitter()
+- clearFields()
+- showAlert()
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>200</x><y>280</y><w>220</w><h>170</h></coordinates><panel_attributes>lt=&lt;&lt;.
+&lt;&lt;uses&gt;&gt;</panel_attributes><additional_attributes>200;10;10;150</additional_attributes></element></diagram>
