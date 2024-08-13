@@ -255,7 +255,7 @@
                   <HBox>
                      <children>
                         <Label fx:id="contactStatusLabel" text="Contact status" />
-                        <Button fx:id="validateButton" mnemonicParsing="false" text="V" />
+                        <Button fx:id="validateButton" mnemonicParsing="false" onAction="#validateContact" text="V" />
                         <Button fx:id="cancelButton" mnemonicParsing="false" text="X" />
                      </children>
                   </HBox>

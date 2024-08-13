@@ -129,6 +129,8 @@ public class mainViewController {
 
     // local attributes for displays and serialization
     private ObservableList<Contact> observableContacts = FXCollections.observableArrayList();
+    private boolean isNew;
+    private boolean isEdited;
 
     @FXML
     private void initialize() {
@@ -146,25 +148,55 @@ public class mainViewController {
     }
 
     @FXML
+    private void validateContact() {
+        if (isNew) {
+            Contact newContact = new Contact(firstNameField.getText(), lastNameField.getText(),
+                    personalPhoneField.getText(), emailField.getText(), addressField.getText(), zipCodeField.getText(),
+                    Contact.Gender.FEMALE, birthDatePicker.getValue(), workPhoneField.getText(), nicknameField.getText(),
+                    gitLinkField.getText());
+            observableContacts.add(newContact);
+            tableView.setItems(observableContacts);
+        }
+        if (isEdited) {
+            Contact selectedContact = tableView.getSelectionModel().getSelectedItem();
+            observableContacts.remove(selectedContact);
+            selectedContact.setLastName(lastNameField.getText());
+            selectedContact.setFirstName(firstNameField.getText());
+            selectedContact.setPhone(personalPhoneField.getText());
+            selectedContact.setEmail(emailField.getText());
+            selectedContact.setAddress(addressField.getText());
+            selectedContact.setZipCode(zipCodeField.getText());
+            selectedContact.setBirthDate(birthDatePicker.getValue());
+            selectedContact.setProPhone(workPhoneField.getText());
+            selectedContact.setNickname(nicknameField.getText());
+            selectedContact.setGitLink(gitLinkField.getText());
+            observableContacts.add(selectedContact);
+            tableView.setItems(observableContacts);
+        }
+    }
+
+    @FXML
     private void newContact() {
-            lastNameField.setEditable(true);
-            lastNameField.setPromptText("Required");
-            firstNameField.setEditable(true);
-            personalPhoneField.setEditable(true);
-            emailField.setEditable(true);
-            addressField.setEditable(true);
-            zipCodeField.setEditable(true);
-            birthDatePicker.setEditable(true);
-            workPhoneField.setEditable(true);
-            nicknameField.setEditable(true);
-            gitLinkField.setEditable(true);
-            maleRadio.setDisable(false);
-            femaleRadio.setDisable(false);
-            nonBinaryRadio.setDisable(false);
+        isNew = true;
+        lastNameField.setEditable(true);
+        lastNameField.setPromptText("Required");
+        firstNameField.setEditable(true);
+        personalPhoneField.setEditable(true);
+        emailField.setEditable(true);
+        addressField.setEditable(true);
+        zipCodeField.setEditable(true);
+        birthDatePicker.setEditable(true);
+        workPhoneField.setEditable(true);
+        nicknameField.setEditable(true);
+        gitLinkField.setEditable(true);
+        maleRadio.setDisable(false);
+        femaleRadio.setDisable(false);
+        nonBinaryRadio.setDisable(false);
     }
 
     @FXML
     private void editContact() {
+        isEdited = true;
         if (!lastNameField.getText().isEmpty()) {
             lastNameField.setEditable(true);
             firstNameField.setEditable(true);
