@@ -107,13 +107,21 @@ public class mainViewController {
     @FXML
     private TableColumn<?, ?> lastNameColumn;
 
-
     @FXML
     private TableColumn<?, ?> phoneColumn;
+
+    // -- STATUS LABELS --
+    @FXML
+    private Label exportStatusLabel;
+
+    @FXML
+    private Label contactStatusLabel;
 
     // -- APP KILLER --
     @FXML
     private Button quitButton;
+
+    // local attributes for displays and serialization
 
 
 
