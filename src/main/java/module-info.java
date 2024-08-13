@@ -6,6 +6,7 @@ module fr.afpa {
     requires transitive javafx.graphics;
 
     opens fr.afpa to javafx.fxml;
+    opens fr.afpa.controllers to javafx.fxml;
     exports fr.afpa;
     exports fr.afpa.models;
 }

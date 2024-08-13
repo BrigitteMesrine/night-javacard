@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.afpa.controllers.mainViewController">
    <children>
       <HBox prefHeight="682.0" prefWidth="1024.0">
          <children>
@@ -254,7 +254,7 @@
                   </VBox>
                   <HBox>
                      <children>
-                        <Label text="Contact status" />
+                        <Label fx:id="contactStatusLabel" text="Contact status" />
                         <Button fx:id="validateButton" mnemonicParsing="false" text="V" />
                         <Button fx:id="cancelButton" mnemonicParsing="false" text="X" />
                      </children>
@@ -276,7 +276,7 @@
                   <Insets left="20.0" />
                </HBox.margin>
             </Button>
-            <Label text="Export Status">
+            <Label fx:id="exportStatusLabel" text="Export Status">
                <HBox.margin>
                   <Insets left="20.0" />
                </HBox.margin>
@@ -301,7 +301,7 @@
                   <Insets left="20.0" />
                </HBox.margin>
             </CheckBox>
-            <Button fx:id="quitButton" mnemonicParsing="false" text="Quit">
+            <Button fx:id="quitButton" mnemonicParsing="false" onAction="#quit" text="Quit">
                <HBox.margin>
                   <Insets left="20.0" />
                </HBox.margin>

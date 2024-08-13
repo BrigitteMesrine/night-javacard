@@ -1,5 +1,9 @@
 package fr.afpa.controllers;
 
+import fr.afpa.models.Contact;
+import javafx.application.Platform;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
@@ -122,11 +126,17 @@ public class mainViewController {
     private Button quitButton;
 
     // local attributes for displays and serialization
+    private ObservableList<Contact> observableContacts = FXCollections.observableArrayList();
 
+    @FXML
+    private void initialize() {
 
+    }
 
-
-
+    @FXML
+    private void quit() {
+        Platform.exit();
+    }
 
 
 }
