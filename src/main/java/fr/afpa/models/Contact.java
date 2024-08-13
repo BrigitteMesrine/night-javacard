@@ -60,24 +60,22 @@ public class Contact {
         this.emailProperty = new SimpleStringProperty(email);
         this.addressProperty = new SimpleStringProperty(address);
         this.zipCodeProperty = new SimpleStringProperty(zipCode);
-        StringProperty localGenderProperty = new SimpleStringProperty();
         switch (gender) {
             case Contact.Gender.MALE:
-                genderProperty.setValue("Male");
+                this.genderProperty = new SimpleStringProperty("Male");
                 break;
 
             case Contact.Gender.FEMALE:
-                genderProperty.setValue("Female");
+                this.genderProperty = new SimpleStringProperty("Female");
                 break;
 
             case Contact.Gender.NON_BINARY:
-                genderProperty.setValue("Non binary");
+                this.genderProperty = new SimpleStringProperty("Non binary");
                 break;
 
             default:
                 break;
         }
-        this.genderProperty = localGenderProperty;
         this.birthDateProperty = new SimpleStringProperty(birthDate.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
         this.proPhoneProperty = new SimpleStringProperty(proPhone);
         this.nicknameProperty = new SimpleStringProperty(nickname);

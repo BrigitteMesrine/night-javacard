@@ -1,5 +1,7 @@
 package fr.afpa.controllers;
 
+import java.time.LocalDate;
+
 import fr.afpa.models.Contact;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
@@ -35,13 +37,13 @@ public class mainViewController {
     // -- REQUIRED INFOS FIELDS --
     @FXML
     private Label fullNameLabel;
-        
+
     @FXML
     private TextField lastNameField;
 
     @FXML
     private TextField firstNameField;
-    
+
     @FXML
     private TextField personalPhoneField;
 
@@ -50,23 +52,23 @@ public class mainViewController {
 
     @FXML
     private TextField addressField;
-    
+
     @FXML
     private TextField zipCodeField;
 
     @FXML
     private RadioButton maleRadio;
-    
+
     @FXML
     private RadioButton femaleRadio;
-    
+
     @FXML
     private RadioButton nonBinaryRadio;
 
     // -- OPTIONAL INFO FIELDS --
     @FXML
     private DatePicker birthDatePicker;
-    
+
     @FXML
     private TextField workPhoneField;
 
@@ -85,10 +87,10 @@ public class mainViewController {
     // -- EXPORT BUTTONS --
     @FXML
     private Button exportButton;
-    
+
     @FXML
     private CheckBox vCardBox;
-    
+
     @FXML
     private CheckBox jsonBox;
 
@@ -103,16 +105,16 @@ public class mainViewController {
     private TextField searchBar;
 
     @FXML
-    private TableView<?> tableView;
-    
-    @FXML
-    private TableColumn<?, ?> firstNameColumn;
-    
-    @FXML
-    private TableColumn<?, ?> lastNameColumn;
+    private TableView<Contact> tableView;
 
     @FXML
-    private TableColumn<?, ?> phoneColumn;
+    private TableColumn<Contact, String> firstNameColumn;
+
+    @FXML
+    private TableColumn<Contact, String> lastNameColumn;
+
+    @FXML
+    private TableColumn<Contact, String> phoneColumn;
 
     // -- STATUS LABELS --
     @FXML
@@ -131,12 +133,76 @@ public class mainViewController {
     @FXML
     private void initialize() {
 
+        Contact testContact1 = new Contact("Fabrizio", "PIZARRO", "0606060606", "fab.piz@gmail.com",
+                "3- quai des Trente-Six", "36000", Contact.Gender.MALE, LocalDate.of(1985, 10, 25), "0707070707",
+                "beufa", "gitlink-git.com");
+
+        observableContacts.add(testContact1);
+        tableView.setItems(observableContacts);
+
+        lastNameColumn.setCellValueFactory(cellData -> cellData.getValue().getLastNameProperty());
+        firstNameColumn.setCellValueFactory(cellData -> cellData.getValue().getFirstNameProperty());
+        phoneColumn.setCellValueFactory(cellData -> cellData.getValue().getPhoneProperty());
+    }
+
+    @FXML
+    private void newContact() {
+            lastNameField.setEditable(true);
+            lastNameField.setPromptText("Required");
+            firstNameField.setEditable(true);
+            personalPhoneField.setEditable(true);
+            emailField.setEditable(true);
+            addressField.setEditable(true);
+            zipCodeField.setEditable(true);
+            birthDatePicker.setEditable(true);
+            workPhoneField.setEditable(true);
+            nicknameField.setEditable(true);
+            gitLinkField.setEditable(true);
+            maleRadio.setDisable(false);
+            femaleRadio.setDisable(false);
+            nonBinaryRadio.setDisable(false);
+    }
+
+    @FXML
+    private void editContact() {
+        if (!lastNameField.getText().isEmpty()) {
+            lastNameField.setEditable(true);
+            firstNameField.setEditable(true);
+            personalPhoneField.setEditable(true);
+            emailField.setEditable(true);
+            addressField.setEditable(true);
+            zipCodeField.setEditable(true);
+            birthDatePicker.setEditable(true);
+            workPhoneField.setEditable(true);
+            nicknameField.setEditable(true);
+            gitLinkField.setEditable(true);
+            maleRadio.setDisable(false);
+            femaleRadio.setDisable(false);
+            nonBinaryRadio.setDisable(false);
+        }
+    }
+
+    @FXML
+    private void showContactDetails() {
+
+        Contact selectedContact = tableView.getSelectionModel().getSelectedItem();
+
+        lastNameField.setText(selectedContact.getLastName());
+        firstNameField.setText(selectedContact.getFirstName());
+        personalPhoneField.setText(selectedContact.getPhone());
+        emailField.setText(selectedContact.getEmail());
+        addressField.setText(selectedContact.getAddress());
+        zipCodeField.setText(selectedContact.getZipCode());
+        // genreGroup.;
+        birthDatePicker.setValue(selectedContact.getBirthDate());
+        workPhoneField.setText(selectedContact.getProPhone());
+        nicknameField.setText(selectedContact.getNickname());
+        gitLinkField.setText(selectedContact.getGitLink());
     }
 
     @FXML
     private void quit() {
         Platform.exit();
     }
-
 
 }

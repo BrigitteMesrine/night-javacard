@@ -27,7 +27,7 @@
                         <Insets bottom="20.0" />
                      </VBox.margin>
                   </TextField>
-                  <TableView fx:id="tableView" prefHeight="635.0" prefWidth="673.0">
+                  <TableView fx:id="tableView" onMouseClicked="#showContactDetails" prefHeight="635.0" prefWidth="673.0">
                     <columns>
                       <TableColumn fx:id="lastNameColumn" prefWidth="129.0" text="Last Name" />
                       <TableColumn fx:id="firstNameColumn" prefWidth="140.0" text="First Name" />
@@ -57,8 +57,8 @@
                <children>
                   <HBox>
                      <children>
-                        <Button fx:id="newButton" mnemonicParsing="false" text="New" />
-                        <Button fx:id="editButton" mnemonicParsing="false" text="Edit" />
+                        <Button fx:id="newButton" mnemonicParsing="false" onAction="#newContact" text="New" />
+                        <Button fx:id="editButton" mnemonicParsing="false" onAction="#editContact" text="Edit" />
                         <Button fx:id="deleteButton" mnemonicParsing="false" text="Delete" />
                      </children>
                   </HBox>
@@ -78,7 +78,7 @@
                                           <Insets bottom="5.0" />
                                        </VBox.margin>
                                     </Label>
-                                    <TextField fx:id="lastNameField" promptText="Required">
+                                    <TextField fx:id="lastNameField" editable="false">
                                        <VBox.margin>
                                           <Insets bottom="20.0" />
                                        </VBox.margin>
@@ -88,7 +88,7 @@
                                           <Insets bottom="5.0" />
                                        </VBox.margin>
                                     </Label>
-                                    <TextField fx:id="firstNameField" promptText="Required">
+                                    <TextField fx:id="firstNameField" editable="false" promptText="Required">
                                        <VBox.margin>
                                           <Insets bottom="20.0" />
                                        </VBox.margin>
@@ -105,7 +105,7 @@
                                           <Insets bottom="5.0" />
                                        </VBox.margin>
                                     </Label>
-                                    <TextField fx:id="personalPhoneField" promptText="Required">
+                                    <TextField fx:id="personalPhoneField" editable="false" promptText="Required">
                                        <VBox.margin>
                                           <Insets bottom="20.0" />
                                        </VBox.margin>
@@ -115,7 +115,7 @@
                                           <Insets bottom="5.0" />
                                        </VBox.margin>
                                     </Label>
-                                    <TextField fx:id="emailField" promptText="Required">
+                                    <TextField fx:id="emailField" editable="false" promptText="Required">
                                        <VBox.margin>
                                           <Insets bottom="20.0" />
                                        </VBox.margin>
@@ -135,7 +135,7 @@
                               <Insets bottom="5.0" />
                            </VBox.margin>
                         </Label>
-                        <TextField fx:id="addressField" promptText="Required">
+                        <TextField fx:id="addressField" editable="false" promptText="Required">
                            <VBox.margin>
                               <Insets bottom="20.0" />
                            </VBox.margin>
@@ -149,7 +149,7 @@
                                           <Insets bottom="5.0" />
                                        </VBox.margin>
                                     </Label>
-                                    <TextField fx:id="zipCodeField" promptText="Required">
+                                    <TextField fx:id="zipCodeField" editable="false" promptText="Required">
                                        <VBox.margin>
                                           <Insets bottom="20.0" />
                                        </VBox.margin>
@@ -165,9 +165,9 @@
                                     </Label>
                                     <HBox prefHeight="45.0" prefWidth="275.0">
                                        <children>
-                                          <RadioButton fx:id="maleRadio" mnemonicParsing="false" text="Male" />
-                                          <RadioButton fx:id="femaleRadio" mnemonicParsing="false" text="Female" />
-                                          <RadioButton fx:id="nonBinaryRadio" mnemonicParsing="false" text="Non binary" />
+                                          <RadioButton fx:id="maleRadio" disable="true" mnemonicParsing="false" text="Male" />
+                                          <RadioButton fx:id="femaleRadio" disable="true" mnemonicParsing="false" text="Female" />
+                                          <RadioButton fx:id="nonBinaryRadio" disable="true" mnemonicParsing="false" text="Non binary" />
                                        </children>
                                     </HBox>
                                  </children>
@@ -198,7 +198,7 @@
                                           <Insets bottom="5.0" />
                                        </VBox.margin>
                                     </Label>
-                                    <DatePicker fx:id="birthDatePicker">
+                                    <DatePicker fx:id="birthDatePicker" editable="false" prefHeight="25.0" prefWidth="250.0">
                                        <VBox.margin>
                                           <Insets bottom="20.0" />
                                        </VBox.margin>
@@ -208,7 +208,7 @@
                                           <Insets bottom="5.0" />
                                        </VBox.margin>
                                     </Label>
-                                    <TextField fx:id="nicknameField">
+                                    <TextField fx:id="nicknameField" editable="false">
                                        <VBox.margin>
                                           <Insets bottom="20.0" />
                                        </VBox.margin>
@@ -225,7 +225,7 @@
                                           <Insets bottom="5.0" />
                                        </VBox.margin>
                                     </Label>
-                                    <TextField fx:id="workPhoneField">
+                                    <TextField fx:id="workPhoneField" editable="false">
                                        <VBox.margin>
                                           <Insets bottom="20.0" />
                                        </VBox.margin>
@@ -245,7 +245,7 @@
                               <Insets bottom="5.0" />
                            </VBox.margin>
                         </Label>
-                        <TextField fx:id="gitLinkField">
+                        <TextField fx:id="gitLinkField" editable="false">
                            <VBox.margin>
                               <Insets bottom="20.0" />
                            </VBox.margin>
