@@ -2,11 +2,12 @@ package fr.afpa.models;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.io.Serializable;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
-public class Contact {
+public class Contact implements Serializable {
 
     // Serializable attributes
     private String firstName;
@@ -21,18 +22,18 @@ public class Contact {
     private String nickname;
     private String gitLink;
 
-    // ObjectProperty for JavaFX display
-    private StringProperty firstNameProperty;
-    private StringProperty lastNameProperty;
-    private StringProperty phoneProperty;
-    private StringProperty emailProperty;
-    private StringProperty addressProperty;
-    private StringProperty zipCodeProperty;
-    private StringProperty genderProperty;
-    private StringProperty birthDateProperty;
-    private StringProperty proPhoneProperty;
-    private StringProperty nicknameProperty;
-    private StringProperty gitLinkProperty;
+    // ObjectProperty for JavaFX display ; transient field to escape Serializable
+    private transient StringProperty firstNameProperty;
+    private transient StringProperty lastNameProperty;
+    private transient StringProperty phoneProperty;
+    private transient StringProperty emailProperty;
+    private transient StringProperty addressProperty;
+    private transient StringProperty zipCodeProperty;
+    private transient StringProperty genderProperty;
+    private transient StringProperty birthDateProperty;
+    private transient StringProperty proPhoneProperty;
+    private transient StringProperty nicknameProperty;
+    private transient StringProperty gitLinkProperty;
 
     public enum Gender {
         MALE,

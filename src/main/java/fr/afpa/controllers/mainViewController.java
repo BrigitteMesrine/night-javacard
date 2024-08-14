@@ -1,7 +1,12 @@
 package fr.afpa.controllers;
 
 import java.time.LocalDate;
+import java.util.List;
+import java.util.ArrayList;
 
+import fr.afpa.ContactJSONSerializer;
+import fr.afpa.ContactVCardSerializer;
+import fr.afpa.Serializer;
 import fr.afpa.models.Contact;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
@@ -99,6 +104,7 @@ public class mainViewController {
 
     @FXML
     private CheckBox csvBox;
+    private List<CheckBox> checkboxes = new ArrayList<>();
 
     // -- TABLEVIEW ITEMS --
     @FXML
@@ -130,10 +136,15 @@ public class mainViewController {
     // local attributes for displays and serialization
     private ObservableList<Contact> observableContacts = FXCollections.observableArrayList();
     private boolean isNew;
-    private boolean isEdited;
+    private boolean isEditable;
 
     @FXML
     private void initialize() {
+
+        checkboxes.add(vCardBox);
+        checkboxes.add(jsonBox);
+        checkboxes.add(qrBox);
+        checkboxes.add(csvBox);
 
         Contact testContact1 = new Contact("Fabrizio", "PIZARRO", "0606060606", "fab.piz@gmail.com",
                 "3- quai des Trente-Six", "36000", Contact.Gender.MALE, LocalDate.of(1985, 10, 25), "0707070707",
@@ -148,6 +159,47 @@ public class mainViewController {
     }
 
     @FXML
+    private void exportContact() {
+        // need to add listener in initialize ?
+        // 2D array for CheckBoxes and corresponding Serializers ?
+        
+        ObservableList<Contact> selectedContacts = tableView.getSelectionModel().getSelectedItems();
+        Serializer<Contact> serializer = null;
+        ContactVCardSerializer contactVCardSerializer = new ContactVCardSerializer();
+        ContactJSONSerializer contactJSONSerializer = new ContactJSONSerializer();
+        List<Serializer> serializers = new ArrayList<>();
+
+        serializers.add(contactVCardSerializer);
+        serializers.add(contactJSONSerializer);
+        if (selectedContacts.size() == 1) {
+            for (Contact contact : selectedContacts) {
+                if (vCardBox.isSelected()) {
+                    contactVCardSerializer.save(null, contact);
+                }
+            }
+        }
+        if (vCardBox.isSelected()) {
+            
+        }
+        if (jsonBox.isSelected()) {
+
+        }
+        if (qrBox.isSelected()) {
+
+        }
+        if (csvBox.isSelected()) {
+
+        }
+    }
+
+    @FXML
+    private void cancelContact() {
+        isNew = false;
+        isEditable = false;
+        // hide vBox here
+    }
+
+    @FXML
     private void validateContact() {
         if (isNew) {
             Contact newContact = new Contact(firstNameField.getText(), lastNameField.getText(),
@@ -157,7 +209,7 @@ public class mainViewController {
             observableContacts.add(newContact);
             tableView.setItems(observableContacts);
         }
-        if (isEdited) {
+        if (isEditable) {
             Contact selectedContact = tableView.getSelectionModel().getSelectedItem();
             observableContacts.remove(selectedContact);
             selectedContact.setLastName(lastNameField.getText());
@@ -196,7 +248,7 @@ public class mainViewController {
 
     @FXML
     private void editContact() {
-        isEdited = true;
+        isEditable = true;
         if (!lastNameField.getText().isEmpty()) {
             lastNameField.setEditable(true);
             firstNameField.setEditable(true);
