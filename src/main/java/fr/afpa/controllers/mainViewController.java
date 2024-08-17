@@ -1,7 +1,12 @@
 package fr.afpa.controllers;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
+import fr.afpa.ContactBinarySerializer;
+import fr.afpa.ContactJSONSerializer;
+import fr.afpa.ContactVCardSerializer;
 import fr.afpa.models.Contact;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
@@ -15,8 +20,12 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.VBox;
 
 public class mainViewController {
+
+    @FXML
+    private VBox infoVBox;
 
     // -- CRUD BUTTONS --
     @FXML
@@ -70,7 +79,7 @@ public class mainViewController {
     private DatePicker birthDatePicker;
 
     @FXML
-    private TextField workPhoneField;
+    private TextField proPhoneField;
 
     @FXML
     private TextField nicknameField;
@@ -131,10 +140,26 @@ public class mainViewController {
     private ObservableList<Contact> observableContacts = FXCollections.observableArrayList();
     private boolean isNew;
     private boolean isEdited;
+    private List<TextField> textFields = new ArrayList<>();
+    private ContactBinarySerializer contactBinarySerializer = new ContactBinarySerializer();
+    private ContactVCardSerializer contactVCardSerializer = new ContactVCardSerializer();
+    private ContactJSONSerializer contactJSONSerializer = new ContactJSONSerializer();
 
     @FXML
     private void initialize() {
 
+        infoVBox.setVisible(false);
+        textFields.add(lastNameField);
+        textFields.add(firstNameField);
+        textFields.add(personalPhoneField);
+        textFields.add(emailField);
+        textFields.add(addressField);
+        textFields.add(zipCodeField);
+        textFields.add(proPhoneField);
+        textFields.add(nicknameField);
+        textFields.add(gitLinkField);
+        // observableContacts.add(contactBinarySerializer.load("serials/contactsBinary"));
+        
         Contact testContact1 = new Contact("Fabrizio", "PIZARRO", "0606060606", "fab.piz@gmail.com",
                 "3- quai des Trente-Six", "36000", Contact.Gender.MALE, LocalDate.of(1985, 10, 25), "0707070707",
                 "beufa", "gitlink-git.com");
@@ -150,14 +175,19 @@ public class mainViewController {
     @FXML
     private void validateContact() {
         if (isNew) {
+            isEdited = false;
             Contact newContact = new Contact(firstNameField.getText(), lastNameField.getText(),
                     personalPhoneField.getText(), emailField.getText(), addressField.getText(), zipCodeField.getText(),
-                    Contact.Gender.FEMALE, birthDatePicker.getValue(), workPhoneField.getText(), nicknameField.getText(),
+                    Contact.Gender.FEMALE, birthDatePicker.getValue(), proPhoneField.getText(),
+                    nicknameField.getText(),
                     gitLinkField.getText());
             observableContacts.add(newContact);
             tableView.setItems(observableContacts);
+            contactBinarySerializer.saveList("serials/ContactsBinary", observableContacts);
         }
         if (isEdited) {
+            isNew = false;
+            fullNameLabel.setText(firstNameField.getText() + " " + lastNameField.getText());
             Contact selectedContact = tableView.getSelectionModel().getSelectedItem();
             observableContacts.remove(selectedContact);
             selectedContact.setLastName(lastNameField.getText());
@@ -167,51 +197,34 @@ public class mainViewController {
             selectedContact.setAddress(addressField.getText());
             selectedContact.setZipCode(zipCodeField.getText());
             selectedContact.setBirthDate(birthDatePicker.getValue());
-            selectedContact.setProPhone(workPhoneField.getText());
+            selectedContact.setProPhone(proPhoneField.getText());
             selectedContact.setNickname(nicknameField.getText());
             selectedContact.setGitLink(gitLinkField.getText());
             observableContacts.add(selectedContact);
             tableView.setItems(observableContacts);
+            contactBinarySerializer.saveList("serials/ContactsBinary", observableContacts);
         }
     }
 
     @FXML
     private void newContact() {
         isNew = true;
-        lastNameField.setEditable(true);
-        lastNameField.setPromptText("Required");
-        firstNameField.setEditable(true);
-        personalPhoneField.setEditable(true);
-        emailField.setEditable(true);
-        addressField.setEditable(true);
-        zipCodeField.setEditable(true);
-        birthDatePicker.setEditable(true);
-        workPhoneField.setEditable(true);
-        nicknameField.setEditable(true);
-        gitLinkField.setEditable(true);
-        maleRadio.setDisable(false);
-        femaleRadio.setDisable(false);
-        nonBinaryRadio.setDisable(false);
+        infoVBox.setVisible(true);
+        for (TextField textField : textFields) {
+            textField.setEditable(true);
+            textField.setPromptText("Required");
+        }
     }
 
     @FXML
     private void editContact() {
         isEdited = true;
         if (!lastNameField.getText().isEmpty()) {
-            lastNameField.setEditable(true);
-            firstNameField.setEditable(true);
-            personalPhoneField.setEditable(true);
-            emailField.setEditable(true);
-            addressField.setEditable(true);
-            zipCodeField.setEditable(true);
-            birthDatePicker.setEditable(true);
-            workPhoneField.setEditable(true);
-            nicknameField.setEditable(true);
-            gitLinkField.setEditable(true);
-            maleRadio.setDisable(false);
-            femaleRadio.setDisable(false);
-            nonBinaryRadio.setDisable(false);
+            for (TextField textField : textFields) {
+                textField.setEditable(true);
+            }
         }
+
     }
 
     @FXML
@@ -219,6 +232,8 @@ public class mainViewController {
 
         Contact selectedContact = tableView.getSelectionModel().getSelectedItem();
 
+        infoVBox.setVisible(true);
+        fullNameLabel.setText(selectedContact.getFirstName() + " " + selectedContact.getLastName());
         lastNameField.setText(selectedContact.getLastName());
         firstNameField.setText(selectedContact.getFirstName());
         personalPhoneField.setText(selectedContact.getPhone());
@@ -227,7 +242,7 @@ public class mainViewController {
         zipCodeField.setText(selectedContact.getZipCode());
         // genreGroup.;
         birthDatePicker.setValue(selectedContact.getBirthDate());
-        workPhoneField.setText(selectedContact.getProPhone());
+        proPhoneField.setText(selectedContact.getProPhone());
         nicknameField.setText(selectedContact.getNickname());
         gitLinkField.setText(selectedContact.getGitLink());
     }

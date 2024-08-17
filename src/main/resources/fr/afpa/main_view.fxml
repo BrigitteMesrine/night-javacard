@@ -62,194 +62,195 @@
                         <Button fx:id="deleteButton" mnemonicParsing="false" text="Delete" />
                      </children>
                   </HBox>
-                  <VBox prefHeight="500.0" prefWidth="500.0">
+                  <VBox fx:id="infoVBox">
                      <children>
-                        <Label fx:id="fullNameLabel" text="Contact Fullname">
-                           <font>
-                              <Font size="36.0" />
-                           </font>
-                        </Label>
-                        <HBox prefHeight="160.0" prefWidth="400.0">
+                        <VBox prefHeight="500.0" prefWidth="500.0">
                            <children>
-                              <VBox prefHeight="164.0" prefWidth="334.0">
+                              <Label fx:id="fullNameLabel" text="Contact Fullname">
+                                 <font>
+                                    <Font size="36.0" />
+                                 </font>
+                              </Label>
+                              <HBox prefHeight="160.0" prefWidth="400.0">
                                  <children>
-                                    <Label text="Last Name">
-                                       <VBox.margin>
-                                          <Insets bottom="5.0" />
-                                       </VBox.margin>
-                                    </Label>
-                                    <TextField fx:id="lastNameField" editable="false">
-                                       <VBox.margin>
-                                          <Insets bottom="20.0" />
-                                       </VBox.margin>
-                                    </TextField>
-                                    <Label text="First Name">
-                                       <VBox.margin>
-                                          <Insets bottom="5.0" />
-                                       </VBox.margin>
-                                    </Label>
-                                    <TextField fx:id="firstNameField" editable="false" promptText="Required">
-                                       <VBox.margin>
-                                          <Insets bottom="20.0" />
-                                       </VBox.margin>
-                                    </TextField>
-                                 </children>
-                                 <HBox.margin>
-                                    <Insets right="10.0" />
-                                 </HBox.margin>
-                              </VBox>
-                              <VBox prefHeight="160.0" prefWidth="358.0">
-                                 <children>
-                                    <Label text="Personal Phone">
-                                       <VBox.margin>
-                                          <Insets bottom="5.0" />
-                                       </VBox.margin>
-                                    </Label>
-                                    <TextField fx:id="personalPhoneField" editable="false" promptText="Required">
-                                       <VBox.margin>
-                                          <Insets bottom="20.0" />
-                                       </VBox.margin>
-                                    </TextField>
-                                    <Label text="Email">
-                                       <VBox.margin>
-                                          <Insets bottom="5.0" />
-                                       </VBox.margin>
-                                    </Label>
-                                    <TextField fx:id="emailField" editable="false" promptText="Required">
-                                       <VBox.margin>
-                                          <Insets bottom="20.0" />
-                                       </VBox.margin>
-                                    </TextField>
-                                 </children>
-                                 <HBox.margin>
-                                    <Insets left="10.0" />
-                                 </HBox.margin>
-                              </VBox>
-                           </children>
-                           <VBox.margin>
-                              <Insets top="10.0" />
-                           </VBox.margin>
-                        </HBox>
-                        <Label text="Address">
-                           <VBox.margin>
-                              <Insets bottom="5.0" />
-                           </VBox.margin>
-                        </Label>
-                        <TextField fx:id="addressField" editable="false" promptText="Required">
-                           <VBox.margin>
-                              <Insets bottom="20.0" />
-                           </VBox.margin>
-                        </TextField>
-                        <HBox prefHeight="100.0" prefWidth="200.0">
-                           <children>
-                              <VBox prefHeight="100.0" prefWidth="278.0">
-                                 <children>
-                                    <Label text="Zip Code">
-                                       <VBox.margin>
-                                          <Insets bottom="5.0" />
-                                       </VBox.margin>
-                                    </Label>
-                                    <TextField fx:id="zipCodeField" editable="false" promptText="Required">
-                                       <VBox.margin>
-                                          <Insets bottom="20.0" />
-                                       </VBox.margin>
-                                    </TextField>
-                                 </children>
-                              </VBox>
-                              <VBox prefHeight="67.0" prefWidth="292.0">
-                                 <children>
-                                    <Label text="Gender">
-                                       <VBox.margin>
-                                          <Insets bottom="5.0" />
-                                       </VBox.margin>
-                                    </Label>
-                                    <HBox prefHeight="45.0" prefWidth="275.0">
+                                    <VBox prefHeight="164.0" prefWidth="334.0">
                                        <children>
-                                          <RadioButton fx:id="maleRadio" disable="true" mnemonicParsing="false" text="Male" />
-                                          <RadioButton fx:id="femaleRadio" disable="true" mnemonicParsing="false" text="Female" />
-                                          <RadioButton fx:id="nonBinaryRadio" disable="true" mnemonicParsing="false" text="Non binary" />
+                                          <Label text="Last Name">
+                                             <VBox.margin>
+                                                <Insets bottom="5.0" />
+                                             </VBox.margin>
+                                          </Label>
+                                          <TextField fx:id="lastNameField" editable="false">
+                                             <VBox.margin>
+                                                <Insets bottom="20.0" />
+                                             </VBox.margin>
+                                          </TextField>
+                                          <Label text="First Name">
+                                             <VBox.margin>
+                                                <Insets bottom="5.0" />
+                                             </VBox.margin>
+                                          </Label>
+                                          <TextField fx:id="firstNameField" editable="false" promptText="Required">
+                                             <VBox.margin>
+                                                <Insets bottom="20.0" />
+                                             </VBox.margin>
+                                          </TextField>
                                        </children>
-                                    </HBox>
+                                       <HBox.margin>
+                                          <Insets right="10.0" />
+                                       </HBox.margin>
+                                    </VBox>
+                                    <VBox prefHeight="160.0" prefWidth="358.0">
+                                       <children>
+                                          <Label text="Personal Phone">
+                                             <VBox.margin>
+                                                <Insets bottom="5.0" />
+                                             </VBox.margin>
+                                          </Label>
+                                          <TextField fx:id="personalPhoneField" editable="false" promptText="Required">
+                                             <VBox.margin>
+                                                <Insets bottom="20.0" />
+                                             </VBox.margin>
+                                          </TextField>
+                                          <Label text="Email">
+                                             <VBox.margin>
+                                                <Insets bottom="5.0" />
+                                             </VBox.margin>
+                                          </Label>
+                                          <TextField fx:id="emailField" editable="false" promptText="Required">
+                                             <VBox.margin>
+                                                <Insets bottom="20.0" />
+                                             </VBox.margin>
+                                          </TextField>
+                                       </children>
+                                       <HBox.margin>
+                                          <Insets left="10.0" />
+                                       </HBox.margin>
+                                    </VBox>
                                  </children>
-                                 <HBox.margin>
-                                    <Insets left="20.0" />
-                                 </HBox.margin>
-                              </VBox>
+                                 <VBox.margin>
+                                    <Insets top="10.0" />
+                                 </VBox.margin>
+                              </HBox>
+                              <Label text="Address">
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <TextField fx:id="addressField" editable="false" promptText="Required">
+                                 <VBox.margin>
+                                    <Insets bottom="20.0" />
+                                 </VBox.margin>
+                              </TextField>
+                              <HBox prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <VBox prefHeight="100.0" prefWidth="278.0">
+                                       <children>
+                                          <Label text="Zip Code">
+                                             <VBox.margin>
+                                                <Insets bottom="5.0" />
+                                             </VBox.margin>
+                                          </Label>
+                                          <TextField fx:id="zipCodeField" editable="false" promptText="Required">
+                                             <VBox.margin>
+                                                <Insets bottom="20.0" />
+                                             </VBox.margin>
+                                          </TextField>
+                                       </children>
+                                    </VBox>
+                                    <VBox prefHeight="67.0" prefWidth="292.0">
+                                       <children>
+                                          <Label text="Gender">
+                                             <VBox.margin>
+                                                <Insets bottom="5.0" />
+                                             </VBox.margin>
+                                          </Label>
+                                          <HBox prefHeight="45.0" prefWidth="275.0">
+                                             <children>
+                                                <RadioButton fx:id="maleRadio" disable="true" mnemonicParsing="false" text="Male" />
+                                                <RadioButton fx:id="femaleRadio" disable="true" mnemonicParsing="false" text="Female" />
+                                                <RadioButton fx:id="nonBinaryRadio" disable="true" mnemonicParsing="false" text="Non binary" />
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                       <HBox.margin>
+                                          <Insets left="20.0" />
+                                       </HBox.margin>
+                                    </VBox>
+                                 </children>
+                              </HBox>
                            </children>
-                        </HBox>
-                     </children>
-                     <VBox.margin>
-                        <Insets top="10.0" />
-                     </VBox.margin>
-                  </VBox>
-                  <VBox prefHeight="252.0" prefWidth="639.0">
-                     <children>
-                        <Label text="Optional informations">
-                           <font>
-                              <Font size="36.0" />
-                           </font>
-                        </Label>
-                        <HBox prefHeight="123.0" prefWidth="397.0">
+                        </VBox>
+                        <VBox prefHeight="252.0" prefWidth="639.0">
                            <children>
-                              <VBox prefHeight="134.0" prefWidth="276.0">
+                              <Label text="Optional informations">
+                                 <font>
+                                    <Font size="36.0" />
+                                 </font>
+                              </Label>
+                              <HBox prefHeight="123.0" prefWidth="397.0">
                                  <children>
-                                    <Label text="Date of birth">
-                                       <VBox.margin>
-                                          <Insets bottom="5.0" />
-                                       </VBox.margin>
-                                    </Label>
-                                    <DatePicker fx:id="birthDatePicker" editable="false" prefHeight="25.0" prefWidth="250.0">
-                                       <VBox.margin>
-                                          <Insets bottom="20.0" />
-                                       </VBox.margin>
-                                    </DatePicker>
-                                    <Label text="Nickname">
-                                       <VBox.margin>
-                                          <Insets bottom="5.0" />
-                                       </VBox.margin>
-                                    </Label>
-                                    <TextField fx:id="nicknameField" editable="false">
-                                       <VBox.margin>
-                                          <Insets bottom="20.0" />
-                                       </VBox.margin>
-                                    </TextField>
+                                    <VBox prefHeight="134.0" prefWidth="276.0">
+                                       <children>
+                                          <Label text="Date of birth">
+                                             <VBox.margin>
+                                                <Insets bottom="5.0" />
+                                             </VBox.margin>
+                                          </Label>
+                                          <DatePicker fx:id="birthDatePicker" editable="false" prefHeight="25.0" prefWidth="250.0">
+                                             <VBox.margin>
+                                                <Insets bottom="20.0" />
+                                             </VBox.margin>
+                                          </DatePicker>
+                                          <Label text="Nickname">
+                                             <VBox.margin>
+                                                <Insets bottom="5.0" />
+                                             </VBox.margin>
+                                          </Label>
+                                          <TextField fx:id="nicknameField" editable="false">
+                                             <VBox.margin>
+                                                <Insets bottom="20.0" />
+                                             </VBox.margin>
+                                          </TextField>
+                                       </children>
+                                       <HBox.margin>
+                                          <Insets right="10.0" />
+                                       </HBox.margin>
+                                    </VBox>
+                                    <VBox prefHeight="134.0" prefWidth="292.0">
+                                       <children>
+                                          <Label text="Work phone">
+                                             <VBox.margin>
+                                                <Insets bottom="5.0" />
+                                             </VBox.margin>
+                                          </Label>
+                                          <TextField fx:id="proPhoneField" editable="false">
+                                             <VBox.margin>
+                                                <Insets bottom="20.0" />
+                                             </VBox.margin>
+                                          </TextField>
+                                       </children>
+                                       <HBox.margin>
+                                          <Insets left="10.0" />
+                                       </HBox.margin>
+                                    </VBox>
                                  </children>
-                                 <HBox.margin>
-                                    <Insets right="10.0" />
-                                 </HBox.margin>
-                              </VBox>
-                              <VBox prefHeight="134.0" prefWidth="292.0">
-                                 <children>
-                                    <Label text="Work phone">
-                                       <VBox.margin>
-                                          <Insets bottom="5.0" />
-                                       </VBox.margin>
-                                    </Label>
-                                    <TextField fx:id="workPhoneField" editable="false">
-                                       <VBox.margin>
-                                          <Insets bottom="20.0" />
-                                       </VBox.margin>
-                                    </TextField>
-                                 </children>
-                                 <HBox.margin>
-                                    <Insets left="10.0" />
-                                 </HBox.margin>
-                              </VBox>
+                                 <VBox.margin>
+                                    <Insets top="10.0" />
+                                 </VBox.margin>
+                              </HBox>
+                              <Label text="Git link">
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <TextField fx:id="gitLinkField" editable="false">
+                                 <VBox.margin>
+                                    <Insets bottom="20.0" />
+                                 </VBox.margin>
+                              </TextField>
                            </children>
-                           <VBox.margin>
-                              <Insets top="10.0" />
-                           </VBox.margin>
-                        </HBox>
-                        <Label text="Git link">
-                           <VBox.margin>
-                              <Insets bottom="5.0" />
-                           </VBox.margin>
-                        </Label>
-                        <TextField fx:id="gitLinkField" editable="false">
-                           <VBox.margin>
-                              <Insets bottom="20.0" />
-                           </VBox.margin>
-                        </TextField>
+                        </VBox>
                      </children>
                   </VBox>
                   <HBox>
